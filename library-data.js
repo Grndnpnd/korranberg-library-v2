@@ -539,6 +539,62 @@ LIBRARY.books.push({
 });
 
 LIBRARY.books.push({
+  title: "On the Conception of the Planar-Touched",
+  author: "Vashri Tomwise, Lector of the Thirteen Roads, the Tabernacle",
+  college: "tabernacle",
+  year: "984 YK",
+  restricted: false,
+  type: "book",
+  content: () => `<p>Every scholar of the planes will tell you what a manifest zone does to a place. It thins the wall between Eberron and one of the Thirteen, and through that thinning a plane's nature seeps into the world — Fernia's heat into a forge-town, Shavarath's fury into a battlefield that will not stay quiet, Irian's light into a grove where nothing rots. We map these effects on weather, on harvest, on the reliability of a spell. We are far less honest about what they do to the people born inside them.</p>
+
+<p>I will be plain. A child conceived or carried to term beneath a strong manifest zone is sometimes <em>marked</em> by it. The plane writes a line of itself into the flesh: horns where no parent had horns, a tail, eyes that hold the wrong color of light, skin in a shade no bloodline accounts for. The common folk have a word for the most striking of these children. They call them tieflings, and they call them ill omens, and they bury the matter under superstition rather than look at it squarely.</p>
+
+<div class="section-break">⟡ ⟡ ⟡</div>
+
+<h3>Not Pact, Not Blood</h3>
+
+<p>The error I mean to correct — convenient to the Purified, comforting to everyone else — is the assumption that such children are the issue of fiendish pact or fiendish ancestry, and therefore come only from the cursed western frontier where the old powers still walk. This is wrong. It is not heredity. It is not bargain. It is <strong>resonance</strong>: the plane, running strong, impressing itself upon a life not yet finished forming. It happens wherever a zone burns bright enough, scattered and unpredictable, in farm country and fishing village as readily as in any haunted waste. The parents are ordinary. The child is not, through no fault or work of their own.</p>
+
+<div class="section-break">⟡ ⟡ ⟡</div>
+
+<h3>The Grain of the Will</h3>
+
+<p>Here is the claim that has cost me invitations to better tables than this one. The plane shapes more than the body. I have sat with these people — fishermen, soldiers, a midwife, a thief — and what I found beneath the horns was not a moral failing and not a moral gift, but a <em>leaning</em>. A direction. Something deeper than conscience and older than choice, the way a river has a grain before it has a course. A child of a war-zone does not become wicked; they become someone for whom conflict is the natural shape of the world. A child of a fire-zone burns to make or to unmake. Each carries the purpose of the plane that touched them like a second pulse, quiet beneath the first.</p>
+
+<p>And here is the part the parish priests already know in their bones: it sleeps. Most live and die never knowing what they carry, because nothing ever wakes it. But proximity to a kindred zone can stir it, or great strain, or some single catastrophe that breaks whatever seal held it shut. When that happens, the plane that made them does not merely show in the flesh. It begins to move. It opens its eye inside them and looks out.</p>
+
+<p class="marginalia">The colleges file this treatise under <em>superstition, devotional</em>, and I have stopped arguing. But I have read the registers of three provinces, and the births cluster where the zones run strong — and where the births cluster, so do the wakings, when something at last comes to turn the key.</p>
+`
+});
+
+LIBRARY.books.push({
+  title: "The Drift of the Grey Acre: A Survey of a Wandering Manifest Zone",
+  author: "Coppel ir'Tain, Surveyor-Adjunct to the College of Morridan",
+  college: "morridan",
+  year: "991 YK",
+  restricted: false,
+  type: "book",
+  content: () => `<p>A manifest zone is meant to be a place. One charts it once, sets the boundary stones, and the chart holds. The phenomenon recorded here does not hold. It is a manifestation of Dolurrh — the Realm of the Dead, the grey country into which every soul is said to drain and slowly forget itself — and unlike any fixed zone in my experience, it <em>wanders</em>. The farm-folk of the marches call it the Grey Acre, though it is no single acre and rarely sits in one for long.</p>
+
+<div class="section-break">⟡ ⟡ ⟡</div>
+
+<h3>What the Grey Brings</h3>
+
+<p>Where the zone settles, Dolurrh's nature settles with it. Color goes thin and dull. Sound carries badly, as though the air had grown tired. The living complain of a heaviness behind the eyes and a slowness of memory — names mislaid, errands forgotten, grief that arrives muffled. The newly dead do not depart at once; for a day or two they linger as faint grey afterimages at the edge of sight before the plane draws them down. The priests note, soberly, that the dead are easier to call back while the grey sits near, and all but impossible to recall once it has moved on. Livestock go quiet. Children sleep long. It is not malice. It is only the country of the dead, breathing against ours.</p>
+
+<div class="section-break">⟡ ⟡ ⟡</div>
+
+<h3>The Manner of Its Wandering</h3>
+
+<p>It does not roam at random, whatever the farmhands believe. Across nine years of measurement I find its drift answers to the planar cycle — Dolurrh waxing toward us and ebbing away again — moving slowest and sitting longest when the plane stands nearest, sliding on as it withdraws. A patient reader of the calendar can say, within a season, where the grey will lie. It circles the open farmland in a slow tide, never straying far, returning again and again to the same low fields and the same old steadings, as though it had a memory of its own and could not quite let them go.</p>
+
+<p>The folk do not flee it. They have buried generations beside it and learned its habits as one learns weather — when to sow ahead of it, when to leave a field fallow beneath it, when to keep the old and the sick indoors. The longest-settled farmsteads keep ledgers of its passes going back further than any survey of mine.</p>
+
+<p class="marginalia">My charts are honest as far as they go, but a thing that moves resents being fixed to paper. The families who never left know its tide far better than I — they reckon its returns in generations, not seasons, and they do not always say what they have learned by staying.</p>
+`
+});
+
+LIBRARY.books.push({
   title: "House Deneith: Mercenary Code, Mercenary Conscience",
   author: "Sentinel Marshal (ret.) Kel d'Deneith",
   college: "aureon",
