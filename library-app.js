@@ -433,28 +433,115 @@ function renderAlcoveCard(book, position) {
   `;
 }
 
+// ─── SEARCH INDEX ─────────────────────────────────────────────
+// Built once (lazily) and reused on every keystroke. Each book's
+// content() is invoked a single time here, stripped of HTML, and
+// "folded" so accents, curly quotes, and apostrophes stop blocking
+// matches (e.g. "aureons" finds "Aureon's", "irtain" finds "ir'Tain").
+
+let _searchIndex = null;
+
+function fold(s) {
+  return String(s)
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')   // drop accents
+    .replace(/[\u2018\u2019\u02bc']/g, '')               // drop apostrophes
+    .replace(/[^a-z0-9]+/g, ' ')                         // everything else → space
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Stopwords are ignored as standalone match-tokens (they stay part of
+// the full-phrase match), so "mark of death" isn't drowned out by "of".
+const SEARCH_STOPWORDS = new Set(['the','of','and','a','an','to','in','on','for','is','it','as','at','by','or','from','with','that','this']);
+
+function queryTokens(qF) {
+  return qF.split(' ').filter(w => w.length >= 2 && !SEARCH_STOPWORDS.has(w));
+}
+
+function buildSearchIndex() {
+  _searchIndex = LIBRARY.books.map((b, i) => {
+    let raw = '';
+    try { raw = String(b.content()).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); }
+    catch (e) { /* ignore */ }
+    const col = getCollege(b.college) || {};
+    const titleF = fold(b.title);
+    const authorF = fold(b.author);
+    return {
+      idx: i,
+      titleF,
+      authorF,
+      collegeF: fold((col.name || '') + ' ' + (col.tagline || '')),
+      titleSet: new Set(titleF.split(' ').filter(Boolean)),
+      authorSet: new Set(authorF.split(' ').filter(Boolean)),
+      textRaw: raw,
+      textF: fold(raw)
+    };
+  });
+}
+
+// Auto-rebuilds if the catalog grows (e.g. after appending books to the data file).
+function searchIndex() {
+  if (!_searchIndex || _searchIndex.length !== LIBRARY.books.length) buildSearchIndex();
+  return _searchIndex;
+}
+
+// Single source of truth for relevance, shared by the catalog search
+// and the college-cell alcove ranking.
+function scoreEntry(e, qF, tokens) {
+  let score = 0;
+  let snippet = null;
+  if (!qF) return { score, snippet };
+
+  if (e.titleF.includes(qF)) { score += 100; if (e.titleF.startsWith(qF)) score += 25; }
+  if (e.authorF.includes(qF)) score += 45;
+  if (e.collegeF.includes(qF)) score += 10;
+
+  let covered = 0;
+  for (const w of tokens) {
+    let hit = false;
+    if (e.titleSet.has(w)) { score += 16; hit = true; }
+    else if (e.titleF.includes(w)) { score += 9; hit = true; }
+    if (e.authorSet.has(w)) { score += 6; hit = true; }
+    else if (e.authorF.includes(w)) { score += 3; hit = true; }
+    if (e.collegeF.includes(w)) { score += 3; hit = true; }
+    if (e.textF.includes(w)) { score += 1; hit = true; if (!snippet) snippet = extractSnippet(e.textRaw, w); }
+    if (hit) covered++;
+  }
+  // reward books that contain every word the scholar typed
+  if (tokens.length && covered === tokens.length) score += 15;
+  // a contiguous phrase hit in the body gives the best snippet
+  if (e.textF.includes(qF)) { if (score === 0) score += 1; snippet = extractSnippet(e.textRaw, qF); }
+
+  return { score, snippet };
+}
+
+// Bounded single-edit tolerance (insert/delete/substitute) for the
+// zero-result "did you mean" safety net. Title/author words only.
+function withinEdit1(a, b) {
+  if (a === b) return true;
+  const la = a.length, lb = b.length;
+  if (Math.abs(la - lb) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < la && j < lb) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (la > lb) i++;
+    else if (lb > la) j++;
+    else { i++; j++; }
+  }
+  if (i < la || j < lb) edits++;
+  return edits <= 1;
+}
+
 function rankByQuery(books, q) {
+  const qF = fold(q);
+  const tokens = queryTokens(qF);
+  const ix = searchIndex();
   return books.map(b => {
-    const t = b.title.toLowerCase();
-    const a = b.author.toLowerCase();
     let score = 0;
-    if (t.includes(q)) score += 100;
-    if (a.includes(q)) score += 30;
-    // partial word match in title
-    const words = q.split(/\s+/).filter(w => w.length > 2);
-    for (const w of words) {
-      if (t.includes(w)) score += 10;
-      if (a.includes(w)) score += 4;
-    }
-    // content match (cheap; only if no other match)
-    if (score === 0) {
-      try {
-        const c = b.content().toLowerCase();
-        for (const w of words) {
-          if (c.includes(w)) score += 1;
-        }
-      } catch (e) { /* ignore */ }
-    }
+    const e = (b._idx != null && ix[b._idx] && ix[b._idx].idx === b._idx) ? ix[b._idx] : null;
+    if (e) score = scoreEntry(e, qF, tokens).score;
     return { ...b, _score: score };
   })
   .sort((x, y) => y._score - x._score);
@@ -611,57 +698,48 @@ function onSearchInput(e) {
 
 function doSearch(query) {
   const q = String(query).toLowerCase().trim();
+  const qF = fold(query);
+  const tokens = queryTokens(qF);
   const results = document.getElementById('search-results');
   if (!results) return;
 
   const filterEl = document.querySelector('.search-filter.active');
   const collegeFilter = filterEl ? filterEl.dataset.college : 'all';
 
-  const matches = [];
-  for (let i = 0; i < LIBRARY.books.length; i++) {
-    const b = LIBRARY.books[i];
-    if (b.restricted && !State.vaultUnlocked) continue;
-    if (collegeFilter !== 'all' && b.college !== collegeFilter) continue;
+  const ix = searchIndex();
+  let matches = [];
+  let approximate = false;
 
-    let score = 0;
-    let snippet = null;
+  const passesFilter = (b) =>
+    (!b.restricted || State.vaultUnlocked) &&
+    (collegeFilter === 'all' || b.college === collegeFilter);
 
-    if (!q) {
-      score = 1; // include all
-    } else {
-      const t = b.title.toLowerCase();
-      const a = b.author.toLowerCase();
+  for (let k = 0; k < ix.length; k++) {
+    const e = ix[k];
+    const b = LIBRARY.books[e.idx];
+    if (!passesFilter(b)) continue;
 
-      if (t.includes(q)) score += 100;
-      if (a.includes(q)) score += 30;
+    if (!qF) { matches.push({ book: b, idx: e.idx, score: 1, snippet: null }); continue; }
 
-      const words = q.split(/\s+/).filter(w => w.length > 2);
-      for (const w of words) {
-        if (t.includes(w)) score += 10;
-        if (a.includes(w)) score += 4;
+    const { score, snippet } = scoreEntry(e, qF, tokens);
+    if (score > 0) matches.push({ book: b, idx: e.idx, score, snippet });
+  }
+
+  // Safety net: if nothing matched, tolerate a single typo against
+  // title/author words so "korranburg" still finds "Korranberg".
+  if (qF && matches.length === 0 && tokens.length) {
+    for (let k = 0; k < ix.length; k++) {
+      const e = ix[k];
+      const b = LIBRARY.books[e.idx];
+      if (!passesFilter(b)) continue;
+      let score = 0;
+      for (const w of tokens) {
+        for (const tw of e.titleSet) { if (withinEdit1(w, tw)) { score += 8; break; } }
+        for (const aw of e.authorSet) { if (withinEdit1(w, aw)) { score += 3; break; } }
       }
-
-      if (score === 0 || words.length > 0) {
-        try {
-          const c = b.content().toLowerCase();
-          if (c.includes(q)) {
-            score += 5;
-            snippet = extractSnippet(b.content(), q);
-          } else {
-            for (const w of words) {
-              if (c.includes(w)) {
-                score += 1;
-                if (!snippet) snippet = extractSnippet(b.content(), w);
-              }
-            }
-          }
-        } catch (e) { /* ignore */ }
-      }
+      if (score > 0) matches.push({ book: b, idx: e.idx, score, snippet: null });
     }
-
-    if (score > 0) {
-      matches.push({ book: b, idx: i, score, snippet });
-    }
+    if (matches.length) approximate = true;
   }
 
   matches.sort((a, b) => b.score - a.score);
@@ -672,7 +750,7 @@ function doSearch(query) {
   }
 
   results.innerHTML = `
-    <p class="search-count">${matches.length} ${matches.length === 1 ? 'result' : 'results'}${matches.length > 500 ? ' (showing first 500)' : ''}</p>
+    <p class="search-count">${matches.length} ${matches.length === 1 ? 'result' : 'results'}${approximate ? ' · approximate matches' : ''}${matches.length > 500 ? ' (showing first 500)' : ''}</p>
   ` + matches.slice(0, 500).map(({ book, idx, snippet }) => {
     const college = getCollege(book.college);
     return `
@@ -709,11 +787,22 @@ function extractSnippet(html, q) {
 
 function highlightQuery(htmlEscaped, q) {
   if (!q) return htmlEscaped;
-  // q is plain text, htmlEscaped is escaped — escape q the same way then regex it
-  const qe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  if (!qe) return htmlEscaped;
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const seen = new Set();
+  const parts = [];
+  for (const term of [q, ...q.split(/\s+/)]) {
+    if (!term || term.length < 2) continue;
+    const key = term.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const e = esc(term);
+    if (e) parts.push(e);
+  }
+  if (!parts.length) return htmlEscaped;
+  parts.sort((a, b) => b.length - a.length); // longest first so the full phrase wins
   try {
-    return htmlEscaped.replace(new RegExp(qe, 'gi'), m => `<mark>${m}</mark>`);
+    return htmlEscaped.replace(new RegExp('(' + parts.join('|') + ')', 'gi'), m => `<mark>${m}</mark>`);
   } catch (e) {
     return htmlEscaped;
   }
