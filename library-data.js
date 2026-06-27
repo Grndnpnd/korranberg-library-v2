@@ -485,6 +485,41 @@ LIBRARY.books.push({
 });
 
 LIBRARY.books.push({
+  title: "Compliance Disposal Manifest: Morgrave Antiquities Removed Under the Treaty of Thronehold",
+  author: "Office of Antiquities, Morgrave University, Sharn (intercepted copy; provenance withheld)",
+  college: "drystone",
+  year: "998 YK",
+  restricted: true,
+  type: "dispatch",
+  content: () => `<p>The following is a working copy of an internal disposal manifest produced by Morgrave University's Office of Antiquities in the months after the signing of the Treaty of Thronehold, when every institution holding war-era arcana was obliged to demonstrate that it had surrendered, destroyed, or sealed anything that might constitute the means of manufacturing warforged. How a Morgrave compliance document came to rest in this vault is not a matter the Library will discuss. That it is genuine, we are confident. The names of the disposal witnesses have been removed from this copy.</p>
+
+<h3>Office of Antiquities — Disposal Register, Compliance Audit 998</h3>
+
+<p>Purpose: removal from the active collection of all materiel falling under the prohibited-manufacture clauses. Each entry records catalog designation, description and provenance, ordered disposition, and certification. A disposition of DESTROYED requires a witnessed-destruction certificate filed with the Provost. A disposition of SHIPPED TO VAULT requires a named receiving repository.</p>
+
+<p>AC-1140 — Docent shell, semi-active, recovered from the Cyran front. Disposition: DESTROYED. Witnessed-destruction certificate filed. Cognition rods rendered inert prior to disposal.</p>
+
+<p>AC-1206 — Pattern plates, warforged frame schematics, Cannith origin (salvage). Disposition: SHIPPED TO VAULT. Receiving repository: University Sealed Reliquary, Stack 3.</p>
+
+<p>AC-1188 — Bound fire elemental, forge-grade, containment vessel cracked. Disposition: RELEASED under warded conditions. Certificate filed.</p>
+
+<p>AC-1149 — Titan-plate fragments and ambulation gears, origin disputed (Mournland salvage). Disposition: DESTROYED. Witnessed-destruction certificate filed.</p>
+
+<p>AC-1203 — Creation forge, partial assembly, recovered from the Cyran front and held in deep storage since 995. Disposition: DECOMMISSIONED. Transferred to vault designation [struck from this copy].</p>
+
+<p>AC-1211 — Reagent stores and binding sigil-stock supporting AC-1203. Disposition: DESTROYED. Witnessed-destruction certificate filed.</p>
+
+<div class="section-break">⟡ ⟡ ⟡</div>
+
+<h3>Registrar's Discrepancy Note</h3>
+
+<p>Appended by the receiving archivist of this Library, not by Morgrave. Every item on this manifest resolves cleanly except one. Destroyed items carry a witnessed-destruction certificate; vaulted items carry a named receiving repository. AC-1203 — the forge itself — carries neither. It is not marked DESTROYED. It is marked DECOMMISSIONED, a word that appears nowhere else in Morgrave's disposal vocabulary, and its destination has been struck from this copy. We observe, without drawing a conclusion, that a thing may be decommissioned without being dismantled, and that the items in fact destroyed were the reagents and bindings that <em>operate</em> the forge — not the forge. Where the forge itself went, this document does not say.</p>
+
+<p class="marginalia">Trust ledger: Access to this manifest is restricted to Senior Doyens, to standing inquiry members, and to scholars holding standing Trust authorization. The document bears on a dragonmarked house's compliance with the Treaty of Thronehold and is not to be discussed in unsecured settings. Inquiry has been logged.</p>
+`
+});
+
+LIBRARY.books.push({
   title: "The Library of Korranberg: A Fortress of Knowledge",
   author: "Loremaster Tessa ir'Korran, Senior Archivist",
   college: "soladas",
