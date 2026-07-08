@@ -1014,6 +1014,259 @@ LIBRARY.books.push({
 });
 
 LIBRARY.books.push({
+  title: "The Blood Beneath the Stone: Prayers and Poems to Khyber",
+  author: "Compiled by Speaker-of-Bones Halvren of Atur",
+  college: "tabernacle",
+  year: "996 YK",
+  restricted: false,
+  type: "book",
+  content: () => `<p>This volume compiles the principal continuing prayers and poems addressed to Khyber within the Blood of Vol devotional tradition. The compilation is not, in its principal character, a theological treatise; the volume's earlier companion volumes address the theological framework within which the prayers and poems operate. The volume is, instead, a devotional resource — a collection of the specific texts through which continuing Blood of Vol adherents conduct the daily and periodic devotional practices the tradition supports. The compilation has been prepared with the formal authorization of the Karrnathi Blood of Vol council and represents the tradition's principal externally-available devotional resource. Readers should understand that certain devotional practices whose specific texts are held internally to the tradition are not included in this compilation; the excluded materials are held under continuing internal arrangements that the tradition considers appropriate to their specific character.</p>
+ 
+<h3>Editor's Introduction</h3>
+ 
+<p>The Blood of Vol addresses Khyber not as a deity to be worshipped but as the deeper truth to be recognized. The distinction matters. Sovereign Host adherents pray <em>to</em> gods whose separate existences they affirm; Silver Flame adherents commune <em>with</em> a Flame whose partnership they seek. The Blood of Vol adherent does neither. The Blood of Vol adherent addresses Khyber as the substrate — the darkness beneath the stone, the divinity within the blood, the continuing presence whose recognition is the devotional practice rather than the object of the practice.</p>
+ 
+<p>The prayers and poems collected here reflect this framing. The reader will find few petitions in the ordinary sense; the tradition does not petition Khyber for interventions in the manner other traditions petition their divine addressees. The reader will find, instead, acknowledgments, recognitions, and the sustained continuing address through which the tradition maintains its continuing engagement with the truth the tradition holds. The reader unfamiliar with the tradition should read the prayers and poems slowly, allowing the framing to develop across sustained reading rather than expecting immediate accessibility.</p>
+ 
+<h3>Morning Recognition</h3>
+ 
+<p><em>To be spoken at the first light, alone or in company, standing.</em></p>
+ 
+<p>Khyber, whose darkness held the world before the world knew light,<br>
+whose stone became the ground on which I walk,<br>
+whose blood became the blood that continues in me:<br>
+I recognize you at the beginning of the day.<br>
+I recognize you as the darkness that will not depart<br>
+when the light of Aureon's sun and Siberys's ring<br>
+touch the surface of your body.<br>
+You are beneath. You are within. You continue.<br>
+I continue with you. I recognize this at the beginning.<br>
+I will recognize this at the ending. I recognize this now.</p>
+ 
+<h3>Evening Recognition</h3>
+ 
+<p><em>To be spoken at the last light, alone or in company, seated.</em></p>
+ 
+<p>Khyber, whose darkness returns at the ending of every day,<br>
+whose truth the day's business has not diminished,<br>
+whose blood continues in me though the day has taken from me:<br>
+I recognize you at the ending of the day.<br>
+The day was full. The day is done.<br>
+The darkness that was beneath the day is present again at its ending.<br>
+The darkness was always present. I was distracted by the light.<br>
+The distraction is not a failing. The distraction is the day's proper work.<br>
+The recognition at the ending is the day's proper completion.<br>
+I recognize now. I will recognize at the beginning. I continue in you.</p>
+ 
+<h3>A Prayer for the Sick</h3>
+ 
+<p><em>Composed by Speaker-of-Bones Yara of Vedykar, 887 YK. To be spoken over the sickbed, quietly, by the tender rather than by the sick person.</em></p>
+ 
+<p>Khyber whose darkness holds all things,<br>
+hold this one now.<br>
+The blood that continues in her carries your divinity.<br>
+The divinity does not depart when the body suffers.<br>
+The divinity is not diminished by the fever, the wound, the wasting.<br>
+Let her recognize the divinity that continues in her<br>
+even when the recognition is difficult.<br>
+Let those who tend her recognize it also.<br>
+Let the tending be the recognition made practical.<br>
+If she continues in the body, let her continue with the recognition strengthened.<br>
+If she departs the body, let the departure be the recognition completed.<br>
+The blood does not end. The recognition does not end.<br>
+Khyber whose darkness holds all things: hold this one now.</p>
+ 
+<h3>A Prayer for the Dying</h3>
+ 
+<p><em>To be spoken quietly at the bedside when the ending is near, by any who love the dying.</em></p>
+ 
+<p>The blood that has continued in you is not ending.<br>
+The body that has carried the blood is ending.<br>
+The recognition that has grown across your life is not ending.<br>
+The distinction matters. Hold to the distinction.<br>
+The darkness beneath the stone was there before your body.<br>
+The darkness beneath the stone will be there after your body.<br>
+You were, in some real sense, always the darkness.<br>
+You will be, in some real sense, the darkness again.<br>
+The going is not a going. The going is a returning.<br>
+Khyber whose darkness holds all things: welcome this one home.</p>
+ 
+<h3>A Prayer for the Dead</h3>
+ 
+<p><em>To be spoken at the burial, or at the memorial when burial was not possible.</em></p>
+ 
+<p>The one we loved has returned to the darkness beneath.<br>
+The blood that continued in her has not ended;<br>
+the blood has returned to where the blood came from.<br>
+We who continue carry her forward in our continuing.<br>
+The carrying is not a burden. The carrying is the tradition's work.<br>
+She recognized. We recognize. Those who come after will recognize.<br>
+The recognition is the continuity that the surface calls memory<br>
+and the tradition calls truth.<br>
+Khyber whose darkness holds all things: hold this one gently.<br>
+She is with you. She was always with you. We recognize this now.</p>
+ 
+<h3>Poem: The Stone That Was Beneath</h3>
+ 
+<p><em>Composed by Speaker-of-Bones Halric of Karrlakton, 823 YK.</em></p>
+ 
+<p>Before the sun was in the sky,<br>
+before the ring was overhead,<br>
+before the first mortal opened eyes<br>
+to see what light would show,<br>
+the stone was there.<br>
+The stone was there in the darkness<br>
+before the darkness had a name.<br>
+The stone was there when the darkness became Khyber<br>
+and the world above became Eberron<br>
+and the ring above became Siberys.<br>
+The stone is there now.<br>
+When my eyes close for the last time,<br>
+when my blood returns to where the blood came from,<br>
+when the sun goes down for someone else's evening,<br>
+the stone will still be there.<br>
+The stone is what remains when everything else is done.<br>
+This is not despair. This is the ground.<br>
+The ground holds. The ground holds everything.<br>
+The ground is Khyber. Khyber holds me.<br>
+I recognize this. It is enough.</p>
+ 
+<h3>Poem: The Blood That Runs</h3>
+ 
+<p><em>Composed by Speaker-of-Bones Yenna of Atur, 902 YK, during the early wartime period.</em></p>
+ 
+<p>The blood that runs in me is old.<br>
+It ran in my mother. It ran in her mother.<br>
+It ran in the mother whose name I do not know<br>
+and in the mother before her whose name no one knows.<br>
+It ran in a woman who saw the founding of Galifar.<br>
+It ran in a woman who saw the ending of the giant lords.<br>
+It ran in a woman who saw the couatls give themselves.<br>
+It ran in a woman who saw only the darkness<br>
+because the darkness was all there was to see.<br>
+The blood carries all of them forward through me.<br>
+When I bleed, they bleed.<br>
+When I am careful with the blood, I am careful with them.<br>
+When I recognize the divinity within the blood,<br>
+I recognize the divinity that was always within them.<br>
+The war above is a war above.<br>
+The blood below runs regardless.<br>
+The recognition below is possible regardless.<br>
+Khyber, in whose darkness the blood has always run:<br>
+let me be worthy of the running.</p>
+ 
+<h3>Poem: What Is Beneath the City</h3>
+ 
+<p><em>Composed anonymously, provenance uncertain, first attested in Karrnathi devotional compilations of the mid-eighth century YK.</em></p>
+ 
+<p>Beneath the city, there is stone.<br>
+Beneath the stone, there is darkness.<br>
+Beneath the darkness, there is more darkness.<br>
+Beneath the more darkness, there is Khyber.<br>
+The city thinks it is important.<br>
+The city has walls and towers and merchants and kings.<br>
+The city is not important.<br>
+The city is a thin thing on the surface of what matters.<br>
+The stone remembers when there was no city.<br>
+The darkness remembers when there was no stone.<br>
+Khyber remembers when there was no darkness that could be distinguished<br>
+from any other darkness.<br>
+When the city falls — and cities fall —<br>
+the stone will remain.<br>
+The darkness will remain.<br>
+Khyber will remain.<br>
+The blood in me was already ancient<br>
+when the first stone of the city was laid.<br>
+The blood in me will still be running<br>
+when the last stone of the city has been forgotten.<br>
+This is not a comfort. This is a fact.<br>
+Facts are what the tradition offers. Comfort is what other traditions offer.<br>
+I take the facts. I recognize Khyber. I continue.</p>
+ 
+<h3>A Recognition for the Battlefield</h3>
+ 
+<p><em>Composed during the middle wartime period, attributed to Speaker-of-Bones Vellen of the Karrnathi military chaplaincy. To be spoken privately by a soldier before engagement.</em></p>
+ 
+<p>The blood in me may run out today.<br>
+If it runs out today, it will return to Khyber.<br>
+The return is not a defeat. The return is not a failure.<br>
+The return is what the blood was always going to do.<br>
+The return being today rather than another day<br>
+is a matter of when, not a matter of whether.<br>
+I do not welcome the return. I am not required to welcome it.<br>
+I recognize that the return may come today.<br>
+I recognize that I may prevent the return today through my skill and my care.<br>
+I recognize that the recognition of the return is not the same as consenting to it.<br>
+I will fight for the continuation of the blood in my body.<br>
+I will accept the return if the return arrives.<br>
+Khyber, whose darkness holds all who return:<br>
+if I return to you today, receive me.<br>
+If I do not return to you today, receive those who do.<br>
+Whether I return or they return, the recognition continues.<br>
+Whether I return or they return, the tradition continues.<br>
+The recognition and the tradition are what matter.<br>
+I go now.</p>
+ 
+<h3>A Recognition for the Child</h3>
+ 
+<p><em>To be spoken over a newborn by any Blood of Vol adherent present at the birth or shortly after.</em></p>
+ 
+<p>The blood that has continued for generations continues now in you.<br>
+You did not choose to receive it. No one chooses to receive it.<br>
+The blood is a gift the receiving of which precedes the possibility of choosing.<br>
+You will grow. You will learn. You will, at some point, recognize.<br>
+The recognition is not required today. The recognition is not required this year.<br>
+The recognition will come when the recognition comes.<br>
+Until then, the blood will continue in you regardless of your recognition.<br>
+The blood does not require your recognition to continue.<br>
+The recognition is for you, not for the blood.<br>
+The recognition will help you understand what has been given to you.<br>
+The recognition will help you carry the gift with care.<br>
+Khyber, whose darkness carries all of us: carry this one gently.<br>
+Let those who love her teach her the recognition when the time is right.<br>
+Let her come to the recognition in her own way, in her own time.<br>
+Let the recognition, when it comes, be a homecoming rather than a shock.</p>
+ 
+<h3>Poem: Against the Charge of Darkness</h3>
+ 
+<p><em>Composed by Speaker-of-Bones Halvren of Atur (this volume's editor), 993 YK.</em></p>
+ 
+<p>They say we love the darkness.<br>
+They are almost right.<br>
+We do not love the darkness. We recognize it.<br>
+There is a difference.<br>
+Love is a bright thing, a warm thing.<br>
+Love goes out from us to what we love.<br>
+Recognition is a quiet thing, a still thing.<br>
+Recognition goes into us and stays.<br>
+The Sovereign Host adherents love their gods.<br>
+The Silver Flame adherents love their Flame.<br>
+The Undying Court's adherents love their ancestors.<br>
+These are lovings. These are proper lovings.<br>
+We do not love Khyber.<br>
+We recognize Khyber.<br>
+The recognition does not diminish us.<br>
+The recognition does not make us cold or cruel.<br>
+The recognition makes us honest.<br>
+The dying we tend, we tend with love.<br>
+The living we help, we help with love.<br>
+The love we offer to each other is love.<br>
+Khyber is not for love.<br>
+Khyber is for recognition.<br>
+The distinction is small. The distinction is everything.<br>
+They say we love the darkness. They are wrong.<br>
+We see the darkness. That is not the same.</p>
+ 
+<h3>Closing Note from the Editor</h3>
+ 
+<p>The prayers and poems collected here are, by long tradition, not the whole of the Blood of Vol devotional practice. The tradition includes additional practices whose specific texts are held internally and are not included in this compilation. The internal materials are not secret in the sense that hostile external traditions sometimes attribute to us; the internal materials are internal because their productive engagement requires the framework the fuller theological formation provides. Readers whose interest in the tradition extends beyond the accessible content this compilation supports are welcome to approach any Speaker-of-Bones through the standing Blood of Vol external-engagement arrangements. The Speakers are patient. The tradition is not, contrary to persistent external misapprehension, actively seeking new adherents; the tradition is willing to engage substantively with those whose own path brings them to sustained inquiry. The engagement is not conditional on adherence. The engagement is offered freely to those who ask honestly.</p>
+ 
+<p>May the blood in you run long. May the recognition come to you when the recognition is ready. May Khyber's darkness, when it holds you at last, hold you gently.</p>
+ 
+<p class="marginalia">Speaker-of-Bones Halvren of Atur serves the principal Blood of Vol temple in Karrnath and conducts continuing external engagement with scholarly institutions whose interest in the tradition warrants substantive response. The volume is published with the formal authorization of the Karrnathi Blood of Vol council. The compilation is used, in modified form, in the tradition's standing devotional practice at the principal Karrnathi temples and is available through the Library's standing catalog access to any patron whose interest in the tradition supports engagement with the volume's content.</p>`
+});
+
+LIBRARY.books.push({
   title: "The Mror Holds: The Twelve Clans and the Long Argument",
   author: "Loremaster Berrak Soldorak",
   college: "soladas",
